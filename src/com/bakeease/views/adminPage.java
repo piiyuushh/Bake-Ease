@@ -198,7 +198,7 @@ public class adminPage extends javax.swing.JFrame {
     /*
     Method to add data to table.
     A part of CRUD operations.
-    */
+     */
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // Get input values
         String productName = txtFldProductName.getText();
@@ -256,7 +256,14 @@ public class adminPage extends javax.swing.JFrame {
      */
     private void btnDeleteRowRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowRecordActionPerformed
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
-        model.removeRow(adminTable.getSelectedRow());
+        int selectedRow = adminTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "Select a row to be deleted!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            model.removeRow(selectedRow);
+            JOptionPane.showMessageDialog(null, "Row deleted succesfully!", "Row Deleted", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_btnDeleteRowRecordActionPerformed
 
     private void txtFldProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductNameActionPerformed
