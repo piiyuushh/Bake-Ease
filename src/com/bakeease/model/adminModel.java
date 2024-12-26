@@ -1,5 +1,9 @@
 package com.bakeease.model;
 
+/**
+ *
+ * @author piyushkarn
+ */
 public class adminModel {
     private String productName;
     private String quantity;
