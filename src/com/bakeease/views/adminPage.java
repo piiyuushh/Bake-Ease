@@ -1,7 +1,9 @@
 package com.bakeease.views;
 
+import com.bakeease.model.adminModel;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,8 +19,18 @@ public class adminPage extends javax.swing.JFrame {
         initComponents();
     }
 
-    // Create an ArrayList to store product data
-    ArrayList<String> productList = new ArrayList<>();
+    // Create an linked list to store product data
+    LinkedList<adminModel> productList = new LinkedList<>();
+
+    // method to add bakery Items to table row
+    public void addBakeryItems(adminModel bakeryItems) {
+        productList.add(bakeryItems);
+        DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
+        Object[] data = new Object[]{
+            bakeryItems.getProductName(), bakeryItems.getQuantity(), bakeryItems.getPrice()
+        };
+        model.addRow(data);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,6 +42,7 @@ public class adminPage extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlAdminBackground = new javax.swing.JPanel();
+        btnDeleteRow = new javax.swing.JButton();
         lblEnterDetails = new javax.swing.JLabel();
         btnReturn = new javax.swing.JButton();
         lblAdminText = new javax.swing.JLabel();
@@ -39,11 +52,10 @@ public class adminPage extends javax.swing.JFrame {
         txtFldQuantity = new javax.swing.JTextField();
         lblPrice = new javax.swing.JLabel();
         txtFldPrice = new javax.swing.JTextField();
-        txtFldWeight = new javax.swing.JTextField();
-        lblWeight = new javax.swing.JLabel();
-        btnSubmit = new javax.swing.JButton();
-        btnDeleteRowRecord = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
+        lblProductId = new javax.swing.JLabel();
+        txtFldProductId = new javax.swing.JTextField();
         lblAdminTable = new javax.swing.JLabel();
         scrollPaneTable = new javax.swing.JScrollPane();
         adminTable = new javax.swing.JTable();
@@ -57,6 +69,18 @@ public class adminPage extends javax.swing.JFrame {
         pnlAdminBackground.setMinimumSize(new java.awt.Dimension(1400, 900));
         pnlAdminBackground.setSize(new java.awt.Dimension(1400, 900));
         pnlAdminBackground.setLayout(null);
+
+        btnDeleteRow.setBackground(new java.awt.Color(255, 102, 102));
+        btnDeleteRow.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnDeleteRow.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteRow.setText("Delete Records");
+        btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteRowActionPerformed(evt);
+            }
+        });
+        pnlAdminBackground.add(btnDeleteRow);
+        btnDeleteRow.setBounds(950, 580, 170, 50);
 
         lblEnterDetails.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         lblEnterDetails.setText("Enter Details");
@@ -83,7 +107,7 @@ public class adminPage extends javax.swing.JFrame {
         lblProductName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblProductName.setText("Enter Product Name:");
         pnlAdminBackground.add(lblProductName);
-        lblProductName.setBounds(30, 300, 180, 40);
+        lblProductName.setBounds(30, 350, 180, 40);
 
         txtFldProductName.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         txtFldProductName.addActionListener(new java.awt.event.ActionListener() {
@@ -92,57 +116,25 @@ public class adminPage extends javax.swing.JFrame {
             }
         });
         pnlAdminBackground.add(txtFldProductName);
-        txtFldProductName.setBounds(260, 300, 210, 40);
+        txtFldProductName.setBounds(260, 350, 210, 40);
 
         lblQuantity.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblQuantity.setText("Enter Quantity:");
         pnlAdminBackground.add(lblQuantity);
-        lblQuantity.setBounds(30, 380, 180, 40);
+        lblQuantity.setBounds(30, 420, 180, 40);
 
         txtFldQuantity.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         pnlAdminBackground.add(txtFldQuantity);
-        txtFldQuantity.setBounds(260, 380, 210, 40);
+        txtFldQuantity.setBounds(260, 420, 210, 40);
 
         lblPrice.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblPrice.setText("Enter price:");
         pnlAdminBackground.add(lblPrice);
-        lblPrice.setBounds(30, 450, 180, 40);
+        lblPrice.setBounds(30, 490, 180, 40);
 
         txtFldPrice.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         pnlAdminBackground.add(txtFldPrice);
-        txtFldPrice.setBounds(260, 450, 210, 40);
-
-        txtFldWeight.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        pnlAdminBackground.add(txtFldWeight);
-        txtFldWeight.setBounds(260, 520, 210, 40);
-
-        lblWeight.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblWeight.setText("Enter product weight:");
-        pnlAdminBackground.add(lblWeight);
-        lblWeight.setBounds(30, 530, 190, 20);
-
-        btnSubmit.setBackground(new java.awt.Color(102, 255, 102));
-        btnSubmit.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        btnSubmit.setText("Submit");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-        pnlAdminBackground.add(btnSubmit);
-        btnSubmit.setBounds(130, 600, 130, 50);
-
-        btnDeleteRowRecord.setBackground(new java.awt.Color(255, 102, 102));
-        btnDeleteRowRecord.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        btnDeleteRowRecord.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteRowRecord.setText("Delete records");
-        btnDeleteRowRecord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteRowRecordActionPerformed(evt);
-            }
-        });
-        pnlAdminBackground.add(btnDeleteRowRecord);
-        btnDeleteRowRecord.setBounds(930, 600, 170, 50);
+        txtFldPrice.setBounds(260, 490, 210, 40);
 
         btnClear.setBackground(new java.awt.Color(255, 102, 102));
         btnClear.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -154,7 +146,32 @@ public class adminPage extends javax.swing.JFrame {
             }
         });
         pnlAdminBackground.add(btnClear);
-        btnClear.setBounds(290, 600, 130, 50);
+        btnClear.setBounds(300, 570, 130, 50);
+
+        btnSubmit.setBackground(new java.awt.Color(102, 255, 102));
+        btnSubmit.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        pnlAdminBackground.add(btnSubmit);
+        btnSubmit.setBounds(60, 570, 130, 50);
+
+        lblProductId.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblProductId.setText("Enter Product Id:");
+        pnlAdminBackground.add(lblProductId);
+        lblProductId.setBounds(30, 290, 180, 40);
+
+        txtFldProductId.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        txtFldProductId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFldProductIdActionPerformed(evt);
+            }
+        });
+        pnlAdminBackground.add(txtFldProductId);
+        txtFldProductId.setBounds(260, 290, 210, 40);
 
         lblAdminTable.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         lblAdminTable.setText("Admin Table");
@@ -166,7 +183,7 @@ public class adminPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Quantity", "Price", "Weight"
+                "Name", "Quantity", "Price"
             }
         ));
         scrollPaneTable.setViewportView(adminTable);
@@ -174,6 +191,7 @@ public class adminPage extends javax.swing.JFrame {
         pnlAdminBackground.add(scrollPaneTable);
         scrollPaneTable.setBounds(630, 250, 740, 300);
 
+        lblAdminBackground.setForeground(new java.awt.Color(255, 102, 102));
         lblAdminBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/admin.png"))); // NOI18N
         pnlAdminBackground.add(lblAdminBackground);
         lblAdminBackground.setBounds(0, 0, 1400, 900);
@@ -194,81 +212,91 @@ public class adminPage extends javax.swing.JFrame {
         // set current page visible as false
         setVisible(false);
     }//GEN-LAST:event_btnReturnActionPerformed
+    
+    /*
+    method that checks for duplicate product
+    Ensures that same products are not added
+     */
+    private boolean checkDuplicateProduct(adminModel bakeryItems) {
+        for (adminModel existingBakeryItem : productList) {
+            if (existingBakeryItem.getProductId() == bakeryItems.getProductId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /*
     Method to add data to table.
     A part of CRUD operations.
      */
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        // Get input values
-        String productName = txtFldProductName.getText();
-        String quantityString = txtFldQuantity.getText();
-        String priceString = txtFldPrice.getText();
-        String weightString = txtFldWeight.getText();
-
         // validate empty fields
-        if (productName.isEmpty() || quantityString.isEmpty() || priceString.isEmpty() || weightString.isEmpty()) {
+        if (txtFldProductName.getText().equals("") || txtFldQuantity.getText().equals("") || txtFldPrice.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Empty Fields Detected!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 // parsing the supposed strings values into integer
-                int quantityInt = Integer.parseInt(quantityString);
-                int price = Integer.parseInt(priceString);
-                int weight = Integer.parseInt(weightString);
+                int quantityInt = Integer.parseInt(txtFldQuantity.getText());
+                int priceInt = Integer.parseInt(txtFldPrice.getText());
 
-                // ADDING VALUES TO ARRAY LIST
-                // adding product name to arrayList
-                productList.add(productName);
-                // adding quantity to arrayList
-                productList.add(quantityString);
-                // adding price to array list
-                productList.add(priceString);
-                // adding weight to arrayList
-                productList.add(weightString);
+                // Get input values
+                String productName = txtFldProductName.getText();
+                int quantity = Integer.parseInt(txtFldQuantity.getText());
+                int price = Integer.parseInt(txtFldPrice.getText());
+                int productId = Integer.parseInt(txtFldProductId.getText());
 
-                /* Inserting into table
-                Cast the table model of adminTable to DefaultTableModel
-                This allows us to directly access and manipulate the underlying data structure of the table (e.g., adding or removing rows) 
-                 */
-                // creating model of Table
-                DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
-                // adding the data into the table row
-                model.addRow(new Object[]{txtFldProductName.getText(), txtFldQuantity.getText(), txtFldPrice.getText(), txtFldWeight.getText()});
+                // stating a valid condition as TRUE initially
+                boolean isCorrect = true;
 
-                // added succesfully message
-                JOptionPane.showMessageDialog(null, "Added to the table succesfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                if (isCorrect) {
+                    // creating object of adminModel class to pass values in parameters
+                    adminModel newBakeryItem = new adminModel(productName, quantity, price, productId);
+                    if (checkDuplicateProduct(newBakeryItem)) {
+                        JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease change the product information and try again.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+                        addBakeryItems(newBakeryItem);
+                        JOptionPane.showMessageDialog(null, "Product added succesfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+                }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Quantity, Price and Weight must be numeric!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Product Id, Quantity and Price must be in numeric form!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
-
-    // method to clear text fields
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        txtFldProductName.setText("");
-        txtFldQuantity.setText("");
-        txtFldPrice.setText("");
-        txtFldWeight.setText("");
-    }//GEN-LAST:event_btnClearActionPerformed
-
     /* method to remove selected row
     A part of CRUD operations
      */
-    private void btnDeleteRowRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowRecordActionPerformed
+    private void txtFldProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldProductNameActionPerformed
+
+    private void txtFldProductIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldProductIdActionPerformed
+  
+    // using a private method to delete data from table row
+    private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
         int selectedRow = adminTable.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Select a row to be deleted!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select a row to be deleted.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             model.removeRow(selectedRow);
             JOptionPane.showMessageDialog(null, "Row deleted succesfully!", "Row Deleted", JOptionPane.INFORMATION_MESSAGE);
 
         }
-    }//GEN-LAST:event_btnDeleteRowRecordActionPerformed
+    }//GEN-LAST:event_btnDeleteRowActionPerformed
 
-    private void txtFldProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFldProductNameActionPerformed
+    // method to clear text fields
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtFldProductName.setText("");
+        txtFldProductId.setText("");
+        txtFldQuantity.setText("");
+        txtFldPrice.setText("");
+    }//GEN-LAST:event_btnClearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,7 +336,7 @@ public class adminPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable adminTable;
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDeleteRowRecord;
+    private javax.swing.JButton btnDeleteRow;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblAdminBackground;
@@ -316,14 +344,14 @@ public class adminPage extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdminText;
     private javax.swing.JLabel lblEnterDetails;
     private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lblProductId;
     private javax.swing.JLabel lblProductName;
     private javax.swing.JLabel lblQuantity;
-    private javax.swing.JLabel lblWeight;
     private javax.swing.JPanel pnlAdminBackground;
     private javax.swing.JScrollPane scrollPaneTable;
     private javax.swing.JTextField txtFldPrice;
+    private javax.swing.JTextField txtFldProductId;
     private javax.swing.JTextField txtFldProductName;
     private javax.swing.JTextField txtFldQuantity;
-    private javax.swing.JTextField txtFldWeight;
     // End of variables declaration//GEN-END:variables
 }
