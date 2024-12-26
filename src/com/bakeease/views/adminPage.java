@@ -26,10 +26,10 @@ public class adminPage extends javax.swing.JFrame {
     public void addBakeryItems(adminModel bakeryItems) {
         productList.add(bakeryItems);
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
-        Object[] data = new Object[]{
+        Object[] bakeryData = new Object[]{
             bakeryItems.getProductName(), bakeryItems.getQuantity(), bakeryItems.getPrice()
         };
-        model.addRow(data);
+        model.addRow(bakeryData);
     }
 
     /**
