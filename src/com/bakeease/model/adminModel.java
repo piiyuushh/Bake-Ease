@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.bakeease.model;
 
 /**
@@ -5,7 +9,6 @@ package com.bakeease.model;
  * @author piyushkarn
  */
 public class adminModel {
-
     // declaring variables
     private String productName;
     private int quantity;
@@ -41,7 +44,7 @@ public class adminModel {
         return price;
     }
     
-    // setter methods
+    
     // setter method for product name
     public void setProductName(String productName) {
         this.productName = productName;

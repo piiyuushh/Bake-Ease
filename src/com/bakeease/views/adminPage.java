@@ -250,7 +250,7 @@ public class adminPage extends javax.swing.JFrame {
                 boolean isCorrect = true;
 
                 if (isCorrect) {
-                    // creating object of adminModel class to pass values in parameters
+                    // creating object of AdminModel class to pass values in parameters
                     adminModel newBakeryItem = new adminModel(productName, quantity, price, productId);
                     if (checkDuplicateProduct(newBakeryItem)) {
                         JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease change the product information and try again.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
@@ -327,6 +327,7 @@ public class adminPage extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new adminPage().setVisible(true);
             }
