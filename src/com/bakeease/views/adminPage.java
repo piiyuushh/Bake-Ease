@@ -54,6 +54,7 @@ public class adminPage extends javax.swing.JFrame {
         txtFldPrice = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         lblProductId = new javax.swing.JLabel();
         txtFldProductId = new javax.swing.JTextField();
         lblAdminTable = new javax.swing.JLabel();
@@ -146,7 +147,7 @@ public class adminPage extends javax.swing.JFrame {
             }
         });
         pnlAdminBackground.add(btnClear);
-        btnClear.setBounds(300, 570, 130, 50);
+        btnClear.setBounds(340, 570, 130, 50);
 
         btnSubmit.setBackground(new java.awt.Color(102, 255, 102));
         btnSubmit.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -157,7 +158,19 @@ public class adminPage extends javax.swing.JFrame {
             }
         });
         pnlAdminBackground.add(btnSubmit);
-        btnSubmit.setBounds(60, 570, 130, 50);
+        btnSubmit.setBounds(40, 570, 130, 50);
+
+        btnUpdate.setBackground(new java.awt.Color(255, 153, 51));
+        btnUpdate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        pnlAdminBackground.add(btnUpdate);
+        btnUpdate.setBounds(190, 570, 130, 50);
 
         lblProductId.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblProductId.setText("Enter Product Id:");
@@ -212,7 +225,7 @@ public class adminPage extends javax.swing.JFrame {
         // set current page visible as false
         setVisible(false);
     }//GEN-LAST:event_btnReturnActionPerformed
-    
+
     /*
     method that checks for duplicate product
     Ensures that same products are not added
@@ -253,7 +266,7 @@ public class adminPage extends javax.swing.JFrame {
                     // creating object of AdminModel class to pass values in parameters
                     adminModel newBakeryItem = new adminModel(productName, quantity, price, productId);
                     if (checkDuplicateProduct(newBakeryItem)) {
-                        JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease change the product information and try again.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease change the product information or try updating product information.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
 
                     } else {
                         addBakeryItems(newBakeryItem);
@@ -276,7 +289,7 @@ public class adminPage extends javax.swing.JFrame {
     private void txtFldProductIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldProductIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFldProductIdActionPerformed
-  
+
     // using a private method to delete data from table row
     private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
@@ -297,6 +310,47 @@ public class adminPage extends javax.swing.JFrame {
         txtFldQuantity.setText("");
         txtFldPrice.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
+    // private method to update items
+    private void updateItems() {
+        DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
+        // Clear the table before loading new data
+        // set model row count to 0 to locate to exact updation location
+        model.setRowCount(0);
+        // Iterate through the LinkedList
+        for (adminModel products : productList) {
+            model.addRow(new Object[]{
+                products.getProductName(),
+                products.getQuantity(),
+                products.getPrice()
+            });
+        }
+    }
+
+    // method to update product details
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        int Id = Integer.parseInt(txtFldProductId.getText());
+        String Name = txtFldProductName.getText();
+        int price = Integer.parseInt(txtFldPrice.getText());
+        int quantity = Integer.parseInt(txtFldQuantity.getText());
+
+        boolean isValid = true;
+
+        if (isValid) {
+            for (adminModel menu : productList) {
+                // Matching product id
+                if (menu.getProductId() == Id) {
+                    menu.setProductName(Name);
+                    menu.setQuantity(quantity);
+                    menu.setPrice(price);
+                    // updates product details
+                    // calling above update method
+                    updateItems();
+                    JOptionPane.showMessageDialog(null, "Product information updated succesfully.", "Updated", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+            }
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +394,7 @@ public class adminPage extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteRow;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSubmit;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel lblAdminBackground;
     private javax.swing.JLabel lblAdminTable;
     private javax.swing.JLabel lblAdminText;
