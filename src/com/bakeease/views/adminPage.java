@@ -266,7 +266,7 @@ public class adminPage extends javax.swing.JFrame {
                     // creating object of AdminModel class to pass values in parameters
                     adminModel newBakeryItem = new adminModel(productName, quantity, price, productId);
                     if (checkDuplicateProduct(newBakeryItem)) {
-                        JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease change the product information or try updating product information.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease add a new product or try updating product information.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
 
                     } else {
                         addBakeryItems(newBakeryItem);
