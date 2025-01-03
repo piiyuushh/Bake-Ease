@@ -10,13 +10,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author piyushkarn
  */
-public class adminPage extends javax.swing.JFrame {
+public class AdminPage extends javax.swing.JFrame {
 
     /**
      * Creates new form adminPage
      */
-    public adminPage() {
+    public AdminPage() {
         initComponents();
+        dislayPreLoadedItems();
     }
 
     // Create an linked list to store product data
@@ -27,9 +28,43 @@ public class adminPage extends javax.swing.JFrame {
         productList.add(bakeryItems);
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
         Object[] bakeryData = new Object[]{
-            bakeryItems.getProductName(), bakeryItems.getQuantity(), bakeryItems.getPrice()
+            bakeryItems.getProductId(),bakeryItems.getProductName(), bakeryItems.getQuantity(), bakeryItems.getPrice()
         };
         model.addRow(bakeryData);
+    }
+    
+    // method to display pre loaded bakery items
+    public void dislayPreLoadedItems(){
+        /*
+        creating object of model class
+        calling method addBakeryItems() to add bakery items to table row
+        passing item object in the method
+        */      
+        adminModel item1 = new adminModel("Crossiant", 22, 420, 1);
+        addBakeryItems(item1);
+        
+        adminModel item2 = new adminModel("Cake", 12, 300, 2);
+        addBakeryItems(item2);
+        
+        adminModel item3 = new adminModel("Pastry", 10, 200, 3);
+        addBakeryItems(item3);
+        
+        adminModel item4 = new adminModel("Cheese Cake", 14, 69, 4);
+        addBakeryItems(item4);
+        
+        adminModel item5 = new adminModel("Rumballs", 7, 690, 5);
+        addBakeryItems(item5);
+        
+        adminModel item6 = new adminModel("Whole wheat bread", 4, 120, 6);
+        addBakeryItems(item6);
+        
+        adminModel item7 = new adminModel("Doughnuts", 5, 60, 7);
+        addBakeryItems(item7);
+        
+        adminModel item8 = new adminModel("Muffins", 7, 70, 8);
+        addBakeryItems(item8);
+        //supposed pattern
+        //String productName, int quantity, int price, int productId
     }
 
     /**
@@ -191,18 +226,22 @@ public class adminPage extends javax.swing.JFrame {
         pnlAdminBackground.add(lblAdminTable);
         lblAdminTable.setBounds(930, 180, 230, 30);
 
+        adminTable.setBackground(new java.awt.Color(193, 126, 112));
+        adminTable.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        adminTable.setForeground(new java.awt.Color(255, 255, 255));
         adminTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Name", "Quantity", "Price"
+                "Product ID", "Name", "Quantity", "Price"
             }
         ));
+        adminTable.setRowHeight(30);
         scrollPaneTable.setViewportView(adminTable);
 
         pnlAdminBackground.add(scrollPaneTable);
-        scrollPaneTable.setBounds(630, 250, 740, 300);
+        scrollPaneTable.setBounds(630, 250, 740, 280);
 
         lblAdminBackground.setForeground(new java.awt.Color(255, 102, 102));
         lblAdminBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/admin.png"))); // NOI18N
@@ -219,7 +258,7 @@ public class adminPage extends javax.swing.JFrame {
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // TODO add your handling code here:
         // creating object of home page
-        homePage home = new homePage();
+        HomePage home = new HomePage();
         // Set the homePage visible
         home.setVisible(true);
         // set current page visible as false
@@ -369,21 +408,22 @@ public class adminPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(adminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new adminPage().setVisible(true);
+                new AdminPage().setVisible(true);
             }
         });
     }

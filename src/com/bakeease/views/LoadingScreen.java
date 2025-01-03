@@ -9,10 +9,10 @@ package com.bakeease.views;
  *
  * @author piyushkarn
  */
-public class loadingScreen extends javax.swing.JFrame {
+public class LoadingScreen extends javax.swing.JFrame {
 
     /** Creates new form loadingScreen */
-    public loadingScreen() {
+    public LoadingScreen() {
         initComponents();
         loadingProgressScreen();
     }
@@ -32,9 +32,7 @@ public class loadingScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setMaximumSize(new java.awt.Dimension(1450, 950));
         setMinimumSize(new java.awt.Dimension(1450, 950));
-        setPreferredSize(new java.awt.Dimension(1450, 950));
 
         pnlLoadingScreenBackground.setMaximumSize(new java.awt.Dimension(1450, 950));
         pnlLoadingScreenBackground.setMinimumSize(new java.awt.Dimension(1450, 950));
@@ -82,7 +80,7 @@ public class loadingScreen extends javax.swing.JFrame {
                         Thread.sleep(50); // Add a delay of 50ms
                     }
                     // setting the login Page as set visible TRUE
-                    new loginPage().setVisible(true);
+                    new LoginPage().setVisible(true);
                     // to dispose the loading screen
                     dispose();
                 } 
@@ -106,20 +104,23 @@ public class loadingScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loadingScreen().setVisible(true);
+                new LoadingScreen().setVisible(true);
             }
         });
     }

@@ -4,12 +4,12 @@ package com.bakeease.views;
  *
  * @author piyushkarn
  */
-public class homePage extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame {
 
     /**
      * Creates new form homePage
      */
-    public homePage() {
+    public HomePage() {
         initComponents();
     }
 
@@ -105,7 +105,7 @@ public class homePage extends javax.swing.JFrame {
 
     private void orderPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderPageButtonActionPerformed
         // creating object of order page
-        orderPage order = new orderPage();
+        OrderPage order = new OrderPage();
         // Set the homePage visible
         order.setVisible(true);
 
@@ -121,7 +121,7 @@ public class homePage extends javax.swing.JFrame {
     private void adminPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminPageButtonActionPerformed
         // TODO add your handling code here:
         // creating object of login page
-        adminPage admin = new adminPage();
+        AdminPage admin = new AdminPage();
         // setting set visible as True
         admin.setVisible(true);
         // set home page visible as false
@@ -130,7 +130,7 @@ public class homePage extends javax.swing.JFrame {
 
     private void viewProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProductsButtonActionPerformed
         // TODO add your handling code here:
-        viewProductPage product = new viewProductPage();
+        ViewProductPage product = new ViewProductPage();
         // setting the product page frame set visible as TRUE
         product.setVisible(true);
         // set current page visible as false
@@ -154,20 +154,21 @@ public class homePage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(homePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(homePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(homePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(homePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new homePage().setVisible(true);
+                new HomePage().setVisible(true);
             }
         });
     }
