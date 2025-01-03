@@ -10,12 +10,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author piyushkarn
  */
-public class AdminPage extends javax.swing.JFrame {
+public final class adminPage extends javax.swing.JFrame {
 
     /**
      * Creates new form adminPage
      */
-    public AdminPage() {
+    public adminPage() {
         initComponents();
         dislayPreLoadedItems();
     }
@@ -305,7 +305,7 @@ public class AdminPage extends javax.swing.JFrame {
                     // creating object of AdminModel class to pass values in parameters
                     adminModel newBakeryItem = new adminModel(productName, quantity, price, productId);
                     if (checkDuplicateProduct(newBakeryItem)) {
-                        JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease add a new product or try updating product information.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Same product already exists. \nPlease change the product information or try updating product information.", "Same products found", JOptionPane.INFORMATION_MESSAGE);
 
                     } else {
                         addBakeryItems(newBakeryItem);
@@ -418,12 +418,14 @@ public class AdminPage extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new AdminPage().setVisible(true);
+                new adminPage().setVisible(true);
             }
         });
     }

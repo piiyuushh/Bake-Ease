@@ -121,7 +121,7 @@ public class HomePage extends javax.swing.JFrame {
     private void adminPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminPageButtonActionPerformed
         // TODO add your handling code here:
         // creating object of login page
-        AdminPage admin = new AdminPage();
+        adminPage admin = new adminPage();
         // setting set visible as True
         admin.setVisible(true);
         // set home page visible as false
