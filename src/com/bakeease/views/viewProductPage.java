@@ -4,12 +4,12 @@ package com.bakeease.views;
  *
  * @author piyushkarn
  */
-public class ViewProductPage extends javax.swing.JFrame {
+public class viewProductPage extends javax.swing.JFrame {
 
     /**
      * Creates new form viewProductPage
      */
-    public ViewProductPage() {
+    public viewProductPage() {
         initComponents();
     }
 
@@ -158,7 +158,7 @@ public class ViewProductPage extends javax.swing.JFrame {
 
     private void btnReturnToHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnToHomeActionPerformed
         // creating object of home page
-        HomePage home = new HomePage();
+        homePage home = new homePage();
         // Set the homePage visible
         home.setVisible(true);
         // set current page visible as false
@@ -182,21 +182,23 @@ public class ViewProductPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(viewProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewProductPage().setVisible(true);
+                new viewProductPage().setVisible(true);
             }
         });
     }

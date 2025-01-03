@@ -10,12 +10,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author piyushkarn
  */
-public final class adminPage extends javax.swing.JFrame {
+public final class AdminPage extends javax.swing.JFrame {
 
     /**
      * Creates new form adminPage
      */
-    public adminPage() {
+    public AdminPage() {
         initComponents();
         dislayPreLoadedItems();
     }
@@ -258,7 +258,7 @@ public final class adminPage extends javax.swing.JFrame {
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // TODO add your handling code here:
         // creating object of home page
-        HomePage home = new HomePage();
+        homePage home = new homePage();
         // Set the homePage visible
         home.setVisible(true);
         // set current page visible as false
@@ -425,7 +425,7 @@ public final class adminPage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new adminPage().setVisible(true);
+                new AdminPage().setVisible(true);
             }
         });
     }
