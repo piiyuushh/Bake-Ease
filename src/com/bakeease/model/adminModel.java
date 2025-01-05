@@ -21,7 +21,7 @@ public class adminModel {
     }
 
     // constructor for the current class with parameters
-    public adminModel(String productName, int quantity, int price, int productId) {
+    public adminModel(int productId, String productName, int quantity, int price) {
         this.productName = productName;
         this.quantity = quantity;
         this.price = price;

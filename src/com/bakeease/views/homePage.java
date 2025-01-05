@@ -30,6 +30,7 @@ public class homePage extends javax.swing.JFrame {
         homePageBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home");
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
         homePageBackgroundPanel.setMaximumSize(new java.awt.Dimension(1400, 900));
@@ -121,7 +122,7 @@ public class homePage extends javax.swing.JFrame {
     private void adminPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminPageButtonActionPerformed
         // TODO add your handling code here:
         // creating object of login page
-        adminPage admin = new adminPage();
+        AdminDashboard admin = new AdminDashboard();
         // setting set visible as True
         admin.setVisible(true);
         // set home page visible as false

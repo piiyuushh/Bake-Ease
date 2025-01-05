@@ -32,6 +32,7 @@ public class loginPage extends javax.swing.JFrame {
         loginBackgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setMinimumSize(new java.awt.Dimension(1000, 600));
 
         loginBackgroundPanel.setMaximumSize(new java.awt.Dimension(1400, 900));
