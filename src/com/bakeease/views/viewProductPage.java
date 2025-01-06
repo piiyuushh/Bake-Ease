@@ -159,7 +159,7 @@ public class viewProductPage extends javax.swing.JFrame {
 
     private void btnReturnToHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnToHomeActionPerformed
         // creating object of home page
-        homePage home = new homePage();
+        HomePage home = new HomePage();
         // Set the homePage visible
         home.setVisible(true);
         // set current page visible as false
