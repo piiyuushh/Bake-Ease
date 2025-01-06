@@ -24,26 +24,26 @@ public class BinarySearch {
      */
     
     public adminModel searchByProductName(String searchValue, List<adminModel> studentList,
-            int leftIndex, int rightIndex) {
+            int left, int right) {
 
         // if the search range is invalid, return null
-        if (rightIndex < leftIndex) {
+        if (right < left) {
             return null;
         }
 
         // mid value of current search range
-        int midIndex = (leftIndex + rightIndex) / 2;
+        int mid = (left + right) / 2;
 
         // Compare the search value with the product name at the middle index        
-        if (searchValue.compareToIgnoreCase(studentList.get(midIndex).getProductName()) == 0) {
+        if (searchValue.compareToIgnoreCase(studentList.get(mid).getProductName()) == 0) {
             // If the search value matches the product name, return the object
-            return studentList.get(midIndex);
-        } else if (searchValue.compareToIgnoreCase(studentList.get(midIndex).getProductName()) < 0) {
+            return studentList.get(mid);
+        } else if (searchValue.compareToIgnoreCase(studentList.get(mid).getProductName()) < 0) {
             // If the search value is less than the middle product name, search in the left sublist
-            return searchByProductName(searchValue, studentList, leftIndex, midIndex - 1);
+            return searchByProductName(searchValue, studentList, left, mid - 1);
         } else {
             // If the search value is greater than the middle product name, search in the right sublist
-            return searchByProductName(searchValue, studentList, midIndex + 1, rightIndex);
+            return searchByProductName(searchValue, studentList, mid + 1, right);
         }  
     }
 }

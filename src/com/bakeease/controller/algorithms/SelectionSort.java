@@ -62,7 +62,7 @@ public class SelectionSort {
     private boolean shouldSwap(int current, int extremum, boolean isDesc) {
         return isDesc ? current > extremum : current < extremum;
     }
-    // swaps sorted prlice value
+    // swaps sorted price value
     private void swap(List<adminModel> priceSortList, int i, int j) {
         adminModel temp = PriceSortedList.get(i);
         PriceSortedList.set(i, PriceSortedList.get(j));

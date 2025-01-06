@@ -56,34 +56,34 @@ public class MergeSort {
      * @param left   the left sub list
      * @param right  the right sub list
      * @param isDesc Boolean indicating the sort order
-     * @return the mergedList and sorted list
+     * @return the merged and sorted list
      */
     private List<adminModel> merge(List<adminModel> left, List<adminModel> right, boolean isDesc) {
-        List<adminModel> mergedList = new ArrayList<>();
+        List<adminModel> merged = new ArrayList<>();
         int i = 0, j = 0;
         // Merge based on the model names
         while (i < left.size() && j < right.size()) {
             if (shouldPlaceLeft(left.get(i).getProductName(), right.get(j).getProductName(), isDesc)) {
-                mergedList.add(left.get(i));
+                merged.add(left.get(i));
                 i++;
             } else {
-                mergedList.add(right.get(j));
+                merged.add(right.get(j));
                 j++;
             }
         }
 
         // Add remaining elements
         while (i < left.size()) {
-            mergedList.add(left.get(i));
+            merged.add(left.get(i));
             i++;
         }
 
         while (j < right.size()) {
-            mergedList.add(right.get(j));
+            merged.add(right.get(j));
             j++;
         }
 
-        return mergedList;
+        return merged;
     }
 
     /**

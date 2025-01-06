@@ -102,7 +102,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblAdminHeading = new javax.swing.JLabel();
         lblEnterProductId = new javax.swing.JLabel();
         txtFldProductId = new javax.swing.JTextField();
-        lblEnterPrice = new javax.swing.JLabel();
+        lblEnterProductId1 = new javax.swing.JLabel();
         lblEnterProductQuantity = new javax.swing.JLabel();
         lblEnterProductName = new javax.swing.JLabel();
         txtFldProductName = new javax.swing.JTextField();
@@ -152,10 +152,10 @@ public class AdminDashboard extends javax.swing.JFrame {
         pnlAdminDashboard.add(txtFldProductId);
         txtFldProductId.setBounds(300, 340, 200, 40);
 
-        lblEnterPrice.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        lblEnterPrice.setText("Enter Price:");
-        pnlAdminDashboard.add(lblEnterPrice);
-        lblEnterPrice.setBounds(40, 600, 200, 30);
+        lblEnterProductId1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        lblEnterProductId1.setText("Enter Price:");
+        pnlAdminDashboard.add(lblEnterProductId1);
+        lblEnterProductId1.setBounds(40, 600, 200, 30);
 
         lblEnterProductQuantity.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         lblEnterProductQuantity.setText("Enter Quantity:");
@@ -551,6 +551,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     Adds data to list
      */
     private void btnSortPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortPriceActionPerformed
+        // TODO add your handling code here:
         SelectionSort sort = new SelectionSort();
         List<adminModel> sortedList = sort.sortByPrice(productList, true);
         loadSortedProductData(sortedList);
@@ -593,13 +594,12 @@ public class AdminDashboard extends javax.swing.JFrame {
     Also prints message in console
      */
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        MergeSort searchProduct = new MergeSort();
-        List<adminModel> sortedList = searchProduct.sortByName(productList, false);
+        MergeSort selectionSort = new MergeSort();
+        List<adminModel> sortedList = selectionSort.sortByName(productList, false);
         BinarySearch search = new BinarySearch();
         adminModel searchedData = search.searchByProductName(txtFldSearchBar.getText().trim().toLowerCase(), sortedList, 0, sortedList.size() - 1);
         if (searchedData != null) {
-            System.out.println(searchedData.getProductName()+ "is found.");
-           
+            System.out.println(searchedData.getProductName());
             JOptionPane.showMessageDialog(null, searchedData.getProductName() + " is found.", "Item Found", JOptionPane.INFORMATION_MESSAGE);
         } else {
             System.out.println("Product not found.");
@@ -656,8 +656,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdminBackground;
     private javax.swing.JLabel lblAdminDashboard;
     private javax.swing.JLabel lblAdminHeading;
-    private javax.swing.JLabel lblEnterPrice;
     private javax.swing.JLabel lblEnterProductId;
+    private javax.swing.JLabel lblEnterProductId1;
     private javax.swing.JLabel lblEnterProductName;
     private javax.swing.JLabel lblEnterProductQuantity;
     private javax.swing.JPanel pnlAdminDashboard;
