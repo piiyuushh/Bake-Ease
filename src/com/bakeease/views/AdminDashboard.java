@@ -4,6 +4,9 @@
  */
 package com.bakeease.views;
 
+import com.bakeease.controller.algorithms.BinarySearch;
+import com.bakeease.controller.algorithms.InsertionSort;
+import com.bakeease.controller.algorithms.MergeSort;
 import com.bakeease.controller.algorithms.SelectionSort;
 import com.bakeease.model.adminModel;
 import java.util.LinkedList;
@@ -34,7 +37,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     @param ProductName the product name
     @param Quantity the Quantity
     @param Price the Price
-    */
+     */
     public void addBakeryItems(adminModel bakeryItems) {
         productList.add(bakeryItems);
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
@@ -48,7 +51,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     method to display pre loaded bakery items
     validates the data into table row
     @param item1, item2, item3, item4, item5, item6, item7, item8
-    */
+     */
     public void dislayPreLoadedItems() {
         /*
         creating object of model class
@@ -80,7 +83,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         addBakeryItems(item8);
     }
 
-    
     // method to check duplicate data in the data
     private boolean checkDuplicateProduct(adminModel bakeryItems) {
         for (adminModel existingBakeryItem : productList) {
@@ -118,7 +120,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         adminTable = new javax.swing.JTable();
         btnReturn = new javax.swing.JButton();
-        btnSort = new javax.swing.JButton();
+        btnSortPrice = new javax.swing.JButton();
+        txtFldSearchBar = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnSortQuantity = new javax.swing.JButton();
+        btnSortName = new javax.swing.JButton();
         lblAdminBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -191,8 +197,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         pnlAdminDashboard.add(txtFldQuantity);
         txtFldQuantity.setBounds(300, 510, 200, 40);
 
-        btnSubmit.setBackground(new java.awt.Color(102, 255, 0));
+        btnSubmit.setBackground(new java.awt.Color(102, 204, 0));
         btnSubmit.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +209,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         pnlAdminDashboard.add(btnSubmit);
         btnSubmit.setBounds(60, 690, 120, 50);
 
-        btnUpdate.setBackground(new java.awt.Color(255, 153, 51));
+        btnUpdate.setBackground(new java.awt.Color(193, 126, 112));
         btnUpdate.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
@@ -276,16 +283,57 @@ public class AdminDashboard extends javax.swing.JFrame {
         pnlAdminDashboard.add(btnReturn);
         btnReturn.setBounds(20, 20, 110, 60);
 
-        btnSort.setBackground(new java.awt.Color(102, 255, 0));
-        btnSort.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        btnSort.setText("Sort by Price");
-        btnSort.addActionListener(new java.awt.event.ActionListener() {
+        btnSortPrice.setBackground(new java.awt.Color(193, 126, 112));
+        btnSortPrice.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnSortPrice.setForeground(new java.awt.Color(255, 255, 255));
+        btnSortPrice.setText("Sort by Price");
+        btnSortPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSortActionPerformed(evt);
+                btnSortPriceActionPerformed(evt);
             }
         });
-        pnlAdminDashboard.add(btnSort);
-        btnSort.setBounds(870, 710, 140, 50);
+        pnlAdminDashboard.add(btnSortPrice);
+        btnSortPrice.setBounds(1210, 710, 140, 50);
+
+        txtFldSearchBar.setBackground(new java.awt.Color(246, 243, 238));
+        txtFldSearchBar.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        txtFldSearchBar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        pnlAdminDashboard.add(txtFldSearchBar);
+        txtFldSearchBar.setBounds(460, 30, 370, 60);
+
+        btnSearch.setBackground(new java.awt.Color(246, 243, 238));
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/search.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        pnlAdminDashboard.add(btnSearch);
+        btnSearch.setBounds(840, 30, 70, 60);
+
+        btnSortQuantity.setBackground(new java.awt.Color(193, 126, 112));
+        btnSortQuantity.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnSortQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        btnSortQuantity.setText("Sort by Quantity");
+        btnSortQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortQuantityActionPerformed(evt);
+            }
+        });
+        pnlAdminDashboard.add(btnSortQuantity);
+        btnSortQuantity.setBounds(850, 710, 168, 50);
+
+        btnSortName.setBackground(new java.awt.Color(193, 126, 112));
+        btnSortName.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnSortName.setForeground(new java.awt.Color(255, 255, 255));
+        btnSortName.setText("Sort by Name");
+        btnSortName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortNameActionPerformed(evt);
+            }
+        });
+        pnlAdminDashboard.add(btnSortName);
+        btnSortName.setBounds(1040, 710, 150, 50);
 
         lblAdminBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/admin.png"))); // NOI18N
         pnlAdminDashboard.add(lblAdminBackground);
@@ -333,10 +381,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     
     validates empty fields,
     validates integer manipulation
-    */
+     */
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        if (txtFldProductId.getText().equals("")|| txtFldProductName.getText().equals("") || txtFldQuantity.getText().equals("") || txtFldPrice.getText().equals("")) {
+        if (txtFldProductId.getText().equals("") || txtFldProductName.getText().equals("") || txtFldQuantity.getText().equals("") || txtFldPrice.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Empty Fields Detected!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
@@ -374,7 +422,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     /*
     method to delete table row records
     @param adminTable for admin table variable name
-    */
+     */
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
@@ -391,7 +439,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     /*
     method to return back to home page
     creates object of Home frame
-    */
+     */
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // TODO add your handling code here:
         // creating object of home page
@@ -408,13 +456,13 @@ public class AdminDashboard extends javax.swing.JFrame {
     @param product name
     @param product quantity
     @param price
-    */
+     */
     private void updateItems() {
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
         // Clear the table before loading new data
         // set model row count to 0 to locate to exact updation location
         model.setRowCount(0);
-        // Iterate through the LinkedList
+        // add row for every fields
         for (adminModel products : productList) {
             model.addRow(new Object[]{
                 products.getProductId(),
@@ -429,7 +477,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     /*
     update button method
-    */
+     */
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         int Id = Integer.parseInt(txtFldProductId.getText());
@@ -465,7 +513,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     @param txtFldProductId
     @param txtFldQuantity
     @param txtFldPrice
-    */
+     */
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
         txtFldProductName.setText("");
@@ -477,7 +525,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     /*
     method to perform selection sort
     sorts the data in the table according to "price"
-    */
+     */
     private void loadSortedProductData(List<adminModel> sortedData) {
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();
 
@@ -494,15 +542,70 @@ public class AdminDashboard extends javax.swing.JFrame {
             });
         }
     }
-    // method to execute selection sort
-    private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+
+    /*
+    method to execute selection sort for price
+    Arranges item price ranging from high to low
+    @param adminModel for model
+    creates a object sort and handles sorting
+    Adds data to list
+    */
+    private void btnSortPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortPriceActionPerformed
         // TODO add your handling code here:
         SelectionSort sort = new SelectionSort();
         List<adminModel> sortedList = sort.sortByPrice(productList, true);
         loadSortedProductData(sortedList);
+    }//GEN-LAST:event_btnSortPriceActionPerformed
 
-    }//GEN-LAST:event_btnSortActionPerformed
+    /*
+    insertion sort for sort by quantity
+    @param adminModel for model
+    creates object sortQuantity to handle sorting
+    Adds data to list
+    */
+    private void btnSortQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortQuantityActionPerformed
+        // Create an instance of the InsertionSort class
+        InsertionSort sortQuantity = new InsertionSort();
 
+        // Ensure productList is properly populated with product data
+        // Sort the product list by quantity (descending order in this case)
+        List<adminModel> sortedList = sortQuantity.sortByQuantity(productList, true);
+
+        // Load the sorted data into the table
+        loadSortedProductData(sortedList);
+    }//GEN-LAST:event_btnSortQuantityActionPerformed
+
+    /*
+    method to sort by name
+    @param adminModel for model
+    creates object merge to handle sorting
+    adds data to list
+    */
+    private void btnSortNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortNameActionPerformed
+        MergeSort sort = new MergeSort();
+        List<adminModel> merge = sort.sortByName(productList, true);
+        loadSortedProductData(merge);
+    }//GEN-LAST:event_btnSortNameActionPerformed
+
+    /*
+    button to execute search feature
+    instructs user to provide proper details in case product is not found
+    Else shows success message
+    Also prints message in console
+    */
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        MergeSort selectionSort = new MergeSort();
+        List<adminModel> sortedList = selectionSort.sortByName(productList, false);
+        BinarySearch search = new BinarySearch();
+        adminModel searchedData = search.searchByProductName(txtFldSearchBar.getText().trim().toLowerCase(), sortedList, 0, sortedList.size() - 1);
+        if (searchedData != null) {
+            System.out.println(searchedData.getProductName());
+            JOptionPane.showMessageDialog(null, searchedData.getProductName() + " is found.", "Item Found", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            System.out.println("Product not found.");
+            JOptionPane.showMessageDialog(null,"Item not found. Please check the table or try changing keywords.", "Product Not Found", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -543,7 +646,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnReturn;
-    private javax.swing.JButton btnSort;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSortName;
+    private javax.swing.JButton btnSortPrice;
+    private javax.swing.JButton btnSortQuantity;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
@@ -559,5 +665,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField txtFldProductId;
     private javax.swing.JTextField txtFldProductName;
     private javax.swing.JTextField txtFldQuantity;
+    private javax.swing.JTextField txtFldSearchBar;
     // End of variables declaration//GEN-END:variables
 }

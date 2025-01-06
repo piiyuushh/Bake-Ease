@@ -15,6 +15,29 @@ public class LoadingPage extends javax.swing.JFrame {
      */
     public LoadingPage() {
         initComponents();
+        loadingScreen();
+
+    }
+
+    private void loadingScreen() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i <= 100; i++) {
+                        loadingProgressBar.setValue(i); // Updates the progress bar value
+                        Thread.sleep(50); // Delays the code by 50ms
+                    }
+
+                    new loginPage().setVisible(true);
+
+                    dispose();
+
+                } catch (Exception e) {
+                    e.printStackTrace(); // Print exception details
+                }
+            }
+        }).start();
     }
 
     /**
@@ -27,7 +50,7 @@ public class LoadingPage extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlLoadingScreen = new javax.swing.JPanel();
-        ProgressBarLoading = new javax.swing.JProgressBar();
+        loadingProgressBar = new javax.swing.JProgressBar();
         lblLoadingBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -36,8 +59,8 @@ public class LoadingPage extends javax.swing.JFrame {
         pnlLoadingScreen.setMinimumSize(new java.awt.Dimension(1400, 900));
         pnlLoadingScreen.setPreferredSize(new java.awt.Dimension(1400, 900));
         pnlLoadingScreen.setLayout(null);
-        pnlLoadingScreen.add(ProgressBarLoading);
-        ProgressBarLoading.setBounds(200, 750, 1030, 50);
+        pnlLoadingScreen.add(loadingProgressBar);
+        loadingProgressBar.setBounds(200, 750, 1030, 50);
 
         lblLoadingBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/loading screen.png"))); // NOI18N
         lblLoadingBackground.setMaximumSize(new java.awt.Dimension(1400, 900));
@@ -100,8 +123,8 @@ public class LoadingPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JProgressBar ProgressBarLoading;
     private javax.swing.JLabel lblLoadingBackground;
+    private javax.swing.JProgressBar loadingProgressBar;
     private javax.swing.JPanel pnlLoadingScreen;
     // End of variables declaration//GEN-END:variables
 }

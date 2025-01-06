@@ -11,56 +11,62 @@ import javax.swing.table.DefaultTableModel;
  * @author piyushkarn
  */
 public class SelectionSort {
+    // list for price sorting
+    List<adminModel> PriceSortedList;
 
-    List<adminModel> productSortedList;
+    public SelectionSort() {
+        // initializing array list for price
+        PriceSortedList = new ArrayList<>();
 
-    
-    public SelectionSort(){
-        productSortedList = new ArrayList<>();
-        
     }
-    
-    
-    public List<adminModel> sortByPrice(List<adminModel> studentList, boolean isDesc) {
-        this.productSortedList.clear();
-        this.productSortedList.addAll(studentList);
-        if (productSortedList == null || productSortedList.isEmpty()) {
+
+    /*
+    price sorting starts.
+    @param array list PriceSortedList
+    validates empty sort
+    */
+    public List<adminModel> sortByPrice(List<adminModel> productList, boolean isDesc) {
+        this.PriceSortedList.clear();
+        this.PriceSortedList.addAll(productList);
+        if (PriceSortedList == null || PriceSortedList.isEmpty()) {
             throw new IllegalArgumentException("Product list is empty. Insert data!!");
         }
 
-        for (int i = 0; i < productSortedList.size() - 1; i++) {
-            int extremumIndex = findExtremumIndex(productSortedList, i, isDesc);
-            if (i != extremumIndex) {
-                swap(productSortedList, i, extremumIndex);
+        for (int i = 0; i < PriceSortedList.size() - 1; i++) {
+            int priceIndex = findpriceIndex(PriceSortedList, i, isDesc);
+            if (i != priceIndex) {
+                swap(PriceSortedList, i, priceIndex);
             }
         }
 
-        return productSortedList;
+        return PriceSortedList;
     }
     
-    
-    private int findExtremumIndex(List<adminModel> studentSortList, int startIndex, boolean isDesc) {
+    /*
+    method to find price index
+    @param PriceSortedList is used to get price
+    */
+    private int findpriceIndex(List<adminModel> priceSortList, int startIndex, boolean isDesc) {
         int extremumIndex = startIndex;
 
-        for (int j = startIndex + 1; j < studentSortList.size(); j++) {
-            if (shouldSwap(productSortedList.get(j).getPrice(), productSortedList.get(extremumIndex).getPrice(), isDesc)) {
+        for (int j = startIndex + 1; j < priceSortList.size(); j++) {
+            if (shouldSwap(PriceSortedList.get(j).getPrice(), PriceSortedList.get(extremumIndex).getPrice(), isDesc)) {
                 extremumIndex = j;
             }
         }
 
         return extremumIndex;
     }
-    
+
+    // checks is values are to be swapped or not
     private boolean shouldSwap(int current, int extremum, boolean isDesc) {
         return isDesc ? current > extremum : current < extremum;
     }
-    
-    
-    private void swap(List<adminModel> studentSortList, int i, int j) {
-        adminModel temp = productSortedList.get(i);
-        productSortedList.set(i, productSortedList.get(j));
-        productSortedList.set(j, temp);
+    // swaps sorted price value
+    private void swap(List<adminModel> priceSortList, int i, int j) {
+        adminModel temp = PriceSortedList.get(i);
+        PriceSortedList.set(i, PriceSortedList.get(j));
+        PriceSortedList.set(j, temp);
     }
     
-
 }
