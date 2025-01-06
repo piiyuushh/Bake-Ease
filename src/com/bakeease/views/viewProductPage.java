@@ -36,6 +36,7 @@ public class viewProductPage extends javax.swing.JFrame {
         lblBackgroundViewProducts = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Products");
         setMinimumSize(new java.awt.Dimension(1400, 900));
 
         pnlViewPrdocutBackground.setMaximumSize(new java.awt.Dimension(1400, 900));

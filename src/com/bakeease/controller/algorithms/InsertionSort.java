@@ -11,17 +11,24 @@ import java.util.List;
 public class InsertionSort {
     // list for quantity sorting
     List<adminModel> QuantitySortedList;
-
+    
+    /**
+     * Constructor initializes the list for storing the sorted results.
+     */
     public InsertionSort() {
         // initializing array list for quantity
         QuantitySortedList = new ArrayList<>();
     }
 
-    /*
-    quantity sorting starts.
-    @param array list QuantitySortedList
-    validates empty sort
-    */
+    /**
+     * Sorts a list of adminModel objects by quantity.
+     *
+     * @param productList the list of adminModel objects to be sorted
+     * @param isDesc      Boolean indicating whether to sort in descending order (true) 
+     *                    or ascending order (false)
+     * @return the sorted list of adminModel objects
+     * @throws IllegalArgumentException if the provided list is null or empty
+     */
     public List<adminModel> sortByQuantity(List<adminModel> productList, boolean isDesc) {
         this.QuantitySortedList.clear();
         this.QuantitySortedList.addAll(productList);
@@ -29,6 +36,7 @@ public class InsertionSort {
             throw new IllegalArgumentException("Product list is empty. Insert data!!");
         }
 
+        // Perform the insertion sort
         for (int i = 1; i < QuantitySortedList.size(); i++) {
             adminModel key = QuantitySortedList.get(i);
             int j = i - 1;
@@ -38,13 +46,19 @@ public class InsertionSort {
                 QuantitySortedList.set(j + 1, QuantitySortedList.get(j));
                 j = j - 1;
             }
+            // place key in correct position
             QuantitySortedList.set(j + 1, key);
         }
 
         return QuantitySortedList;
     }
 
-    // checks if values are to be swapped or not based on isDesc flag
+    /* checks if values are to be swapped or not based on isDesc flag
+    * @param current the current quantity being compared
+    * @param key     the quantity to compare against
+    * @param isDesc  boolean indicating the sort order
+    * @return true if the elements should be swapped, false otherwise
+    */
     private boolean shouldSwap(int current, int key, boolean isDesc) {
         return isDesc ? current < key : current > key;
     }

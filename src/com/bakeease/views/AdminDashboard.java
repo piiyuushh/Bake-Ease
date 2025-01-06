@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.bakeease.views;
 
 import com.bakeease.controller.algorithms.BinarySearch;
@@ -128,6 +124,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblAdminBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admin");
         setMinimumSize(new java.awt.Dimension(1400, 900));
 
         pnlAdminDashboard.setBackground(new java.awt.Color(255, 255, 255));

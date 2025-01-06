@@ -82,7 +82,7 @@ public class loginPage extends javax.swing.JFrame {
 
         loginBackgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/login page.png"))); // NOI18N
         loginBackgroundPanel.add(loginBackgroundImage);
-        loginBackgroundImage.setBounds(0, -120, 1400, 1150);
+        loginBackgroundImage.setBounds(0, -130, 1400, 1150);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

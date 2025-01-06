@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.bakeease.views;
 
 /**
@@ -32,6 +28,7 @@ public class orderPage extends javax.swing.JFrame {
         lblOrderBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Order");
 
         pnlOrderBackground.setMaximumSize(new java.awt.Dimension(1000, 900));
         pnlOrderBackground.setMinimumSize(new java.awt.Dimension(1000, 900));
