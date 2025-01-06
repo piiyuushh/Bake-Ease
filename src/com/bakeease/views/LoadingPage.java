@@ -25,7 +25,7 @@ public class LoadingPage extends javax.swing.JFrame {
                         Thread.sleep(50); // Delays the code by 50ms
                     }
 
-                    new LoginPage().setVisible(true);
+                    new loginPage().setVisible(true);
 
                     dispose();
 
