@@ -515,16 +515,22 @@ public class AdminDashboard extends javax.swing.JFrame {
         if (txtFldProductName.getText().equals("") && txtFldProductId.getText().equals("") && txtFldQuantity.getText().equals("") && txtFldPrice.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Nothing to clear.", "Not Cleared", JOptionPane.WARNING_MESSAGE);
         } else {
-            txtFldProductName.setText("");
-            txtFldProductId.setText("");
-            txtFldQuantity.setText("");
-            txtFldPrice.setText("");
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear all the text fields ?", "Confirm Clear", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.YES_OPTION) {
+                txtFldProductName.setText("");
+                txtFldProductId.setText("");
+                txtFldQuantity.setText("");
+                txtFldPrice.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nothing is cleared.", "Not Cleared", JOptionPane.WARNING_MESSAGE);
+            }
+
         }
     }//GEN-LAST:event_btnClearActionPerformed
 
     /*
-    method to perform selection sort
-    sorts the data in the table according to "price"
+    method to perform  sort
+    sorts the data in the table according to "price", "quantity" and "name"
      */
     private void loadSortedProductData(List<adminModel> sortedData) {
         DefaultTableModel model = (DefaultTableModel) adminTable.getModel();

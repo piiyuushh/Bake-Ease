@@ -24,7 +24,7 @@ public class orderPage extends javax.swing.JFrame {
 
         pnlOrderBackground = new javax.swing.JPanel();
         lblOrder = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
         lblOrderBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,15 +41,15 @@ public class orderPage extends javax.swing.JFrame {
         pnlOrderBackground.add(lblOrder);
         lblOrder.setBounds(1210, 40, 130, 40);
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/return icon.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnReturn.setBackground(new java.awt.Color(255, 51, 51));
+        btnReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/return icon.png"))); // NOI18N
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnReturnActionPerformed(evt);
             }
         });
-        pnlOrderBackground.add(jButton1);
-        jButton1.setBounds(10, 10, 100, 60);
+        pnlOrderBackground.add(btnReturn);
+        btnReturn.setBounds(10, 10, 100, 60);
 
         lblOrderBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bakeease/resource/admin.png"))); // NOI18N
         pnlOrderBackground.add(lblOrderBackground);
@@ -70,14 +70,14 @@ public class orderPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // creating object of home page
         homePage home = new homePage();
         // Set the homePage visible
         home.setVisible(true);
         // set current page visible as false
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnReturnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,7 +122,7 @@ public class orderPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JLabel lblOrder;
     private javax.swing.JLabel lblOrderBackground;
     private javax.swing.JPanel pnlOrderBackground;

@@ -22,7 +22,7 @@ public class SelectionSort {
 
     /*
     price sorting starts.
-    @param array list PriceSortedList
+    @param array list priceSortedList
     validates empty sort
     */
     public List<adminModel> sortByPrice(List<adminModel> productList, boolean isDesc) {
@@ -44,7 +44,7 @@ public class SelectionSort {
     
     /*
     method to find price index
-    @param PriceSortedList is used to get price
+    @param priceSortedList is used to get price
     */
     private int findpriceIndex(List<adminModel> priceSortList, int startIndex, boolean isDesc) {
         int extremumIndex = startIndex;

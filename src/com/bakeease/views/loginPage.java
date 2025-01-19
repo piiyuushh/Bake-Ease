@@ -112,11 +112,13 @@ public class loginPage extends javax.swing.JFrame {
             homePage home = new homePage();
             // Set the homePage visible
             home.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Welcome.");
+
         } else {
             // instruction to enter credentials correctly
+            JOptionPane.showMessageDialog(null, "Enter credentials correctly.");
             usernameTextField.setText("");
             passwordTextField.setText("");
-            JOptionPane.showMessageDialog(null, "Enter credentials correctly.");
         }
 
     }//GEN-LAST:event_loginButtonActionPerformed
